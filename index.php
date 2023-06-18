@@ -124,12 +124,7 @@
             </div>
           <?php
           }
-        } else {
-          ?>
-            <p>Clé "GET" inconnue.</p>
-            <a href="index.php#main">Choisir un autre produit</a>
-          <?php
-        }
+        } 
       ?>
     </div>
         
@@ -174,17 +169,17 @@
       $forfait = $_GET['forfait'];
     
       // Filtrer les produits en fonction des valeurs sélectionnées
-      $tab_produits = filtrerProduits($categorie, $forfait);
+      $tab_produits_filtre = filtrerProduits($categorie, $forfait);
     
       // Vérifier s'il y a des produits à afficher
-      if (!empty($tab_produits)) {
+      if (!empty($tab_produits_filtre)) {
           // Afficher les produits
-          foreach ($tab_produits as $ligne_produits) {
+          foreach ($tab_produits_filtre as $ligne_produits_filtre) {
               ?>
               <article class="article_produit">
-                  <h2><?php echo $ligne_produits["produit"]; ?></h2>
-                  <img src="<?php echo $ligne_produits['images']; ?>" alt="Image de <?php echo $ligne['designation']; ?>" style="width:30%">
-                  <h5>Prix : <?php echo $ligne_produits["prixTTC"] ?>€</h5>
+                  <h2><?php echo $ligne_produits_filtre["produit"]; ?></h2>
+                  <img src="<?php echo $ligne_produits_filtre['images']; ?>" alt="Image de <?php echo $ligne['designation']; ?>" style="width:30%">
+                  <h5>Prix : <?php echo $ligne_produits_filtre["prixTTC"] ?>€</h5>
               </article>
               <?php
           }
