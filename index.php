@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="css/css_personnel/Levan_MARTIN_CSS.css">
+    <link rel="stylesheet" href="css/css_personnel/css_global.css">
     <link rel="stylesheet" href="css/css_bootstrap/bootstrap.min.css">
 </head>
 <body>
@@ -72,7 +72,7 @@
       
     <div id="main">
       <?php if (!isset($_GET['view'])) { ?>
-        <div class="container px-4 py-5" id="custom-cards">
+        <div class="container px-4 py-5 custom-cards">
           <h1><strong>Nos produits</strong></h1>
           <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
             <?php
@@ -114,7 +114,7 @@
                   <h1 class="display-4 fw-bold lh-1 text-body-emphasis"><?php echo $ligne['produit']; ?></h1>
                   <p class="lead mt-3">Catégorie: <?php echo $ligne['categorie']; ?> <br> Prix: <?php echo $ligne['prixTTC']; ?>€</p>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                    <a href="index.php#main"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold mt-3">Choisir un autre produit</button></a>
+                    <a href="index.php#maain" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold mt-3">Choisir un autre produit</a>
                   </div>
                 </div>
                 <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden">
@@ -128,7 +128,7 @@
       ?>
     
     <?php if (!isset($_GET['view'])) { ?>
-    <div class="container px-4 py-5" id="custom-cards">
+    <div class="container px-4 py-5 custom-cards">
       <h1><strong>Produits filtrés</strong></h1>
       <form method="GET" action="#categorie">
         <label for="categorie">Catégorie :</label>
@@ -245,7 +245,8 @@
         </ul>
       </footer>
     </div>
-    <script src="js/js_personnel/navbar.js"></script>
-    <script src="js/js_personnel/index.js"></script>
+  </div>
+  <script src="js/js_personnel/navbar.js"></script>
+  <script src="js/js_personnel/index.js"></script>
 </body>
 </html>

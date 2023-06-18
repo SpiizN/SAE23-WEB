@@ -160,7 +160,7 @@ $produits = getProduits();
                         <td><?php echo $produit['prixTTC']; ?></td>
                         <td><?php echo $produit['designation']; ?></td>
                         <td><?php echo $produit['forfaitLivraison']; ?></td>
-                        <td><?php echo $produit['images']; ?></td>
+                        <td><img src="<?php echo $produit['images']; ?>" alt="Image du produit" style="width:100px;"></td>
                         <td>
                             <!-- Crée une case à cocher pour sélectionner un élément à supprimer -->
                             <input type="checkbox" name="selected_items[]" value="<?php echo $produit['idPdt']; ?>">
@@ -170,7 +170,7 @@ $produits = getProduits();
             </table>
             <br>
             <!-- Champ de saisie du captcha -->
-            <input class="mt-2" type="text" name="captcha"/>
+            <input class="mt-2" type="text" name="captcha">
             <!-- Image du captcha -->
             <img src="captcha/image.php" onclick="this.src='captcha/image.php?' + Math.random();" alt="captcha" style="cursor:pointer;">
             <!-- Message d'erreur du captcha -->

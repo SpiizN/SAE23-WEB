@@ -52,7 +52,7 @@
     <title>Connexion</title>
     
     <link rel="stylesheet" href="css/css_bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="css/css_personnel/Levan_MARTIN_CSS.css">
+    <link rel="stylesheet" href="css/css_personnel/css_global.css">
 
 </head>
 <body class="body-connexion">

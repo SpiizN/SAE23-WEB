@@ -152,3 +152,97 @@
 .article_produit:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+/* Connexion */
+.body-connexion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  background: url(../../media/images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(2px);
+}
+
+.form-connexion {
+  background: transparent;
+  width: 25%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 1vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  backdrop-filter: blur(15px);
+}
+
+.form-connexion fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-connexion label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-connexion .input-box {
+  width: 100%;
+  position: relative;
+  margin: 10px 0;
+  width: 310px;
+  border-bottom: 2px solid #fff;
+}
+
+.form-connexion .input-box input[type="text"],
+.form-connexion .input-box input[type="password"] {
+  width: 100%;
+  padding: 3%;
+  border-radius: 3px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.form-connexion input[type="submit"] {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 2em;
+  cursor: pointer;
+}
+
+.form-connexion input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+#back-connexion {
+  width: 100%;
+  position: relative;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+table th, table td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+  background-color: #dddddd;
+}
