@@ -140,6 +140,7 @@ $produits = getProduits();
           <div class="col-lg-12 p-3 p-lg-5 pt-lg-3" id="formulaire">
 
     <form method="post" action="suppression.php">
+    <fieldset>
     <legend > Supprimer un élément </legend>
         <?php if (!empty($produits)) : ?>
             <table >
@@ -179,6 +180,7 @@ $produits = getProduits();
         <?php else : ?>
             <p>Aucun élément trouvé dans la base de données.</p>
         <?php endif; ?>
+        </fieldset>
     </form>
 
     <p><a href="index.php">Retour à la page d'accueil</a></p>
@@ -222,8 +224,6 @@ $produits = getProduits();
             </li>
           </ul>
         </footer>
-      </div>
-    </div>
   </div>
   <script src="js/js_personnel/navbar.js"></script>
   <script src="js/js_personnel/index.js"></script>
