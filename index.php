@@ -133,7 +133,66 @@
       ?>
     </div>
         
-
+    <form method="GET" action="#categorie">
+      <label for="categorie">Catégorie :</label>
+      <select id="categorie" name="categorie">
+        <option value="">Toutes les catégories</option>
+        <option value="1">Nourriture</option>
+        <option value="2">Électronique</option>
+        <option value="3">Cuisine</option>
+        <option value="4">Pharmacie</option>
+        <option value="5">Pétrole</option>
+        <option value="6">Construction</option>
+        <option value="7">Chimique</option>
+        <option value="8">Textile</option>
+        <option value="9">Automobile</option>
+        <option value="10">Manufacture</option>
+      </select>
+      
+      <label for="forfait">Forfait de livraison :</label>
+      <select id="forfait" name="forfait">
+        <option value="">Tous les forfaits</option>
+        <option value="1">- de 1kg</option>
+        <option value="2">- de 5kg</option>
+        <option value="3">- de 10kg</option>
+        <option value="4">- de 15kg</option>
+        <option value="5">- de 30kg</option>
+        <option value="6">- de 50kg</option>
+        <option value="7">- de 75kg</option>
+        <option value="8">- de 100kg</option>
+        <option value="9">- de 150kg</option>
+        <option value="10">+ de 150kg</option>
+      </select>
+      <button type="submit">Filtrer</button>
+    </form>
+    <?php
+    
+    // Vérifier si le formulaire a été soumis
+    if (isset($_GET['categorie']) && isset($_GET['forfait'])) {
+      // Récupérer les valeurs du formulaire
+      $categorie = $_GET['categorie'];
+      $forfait = $_GET['forfait'];
+    
+      // Filtrer les produits en fonction des valeurs sélectionnées
+      $tab_produits = filtrerProduits($categorie, $forfait);
+    
+      // Vérifier s'il y a des produits à afficher
+      if (!empty($tab_produits)) {
+          // Afficher les produits
+          foreach ($tab_produits as $ligne_produits) {
+              ?>
+              <article class="article_produit">
+                  <h2><?php echo $ligne_produits["produit"]; ?></h2>
+                  <img src="<?php echo $ligne_produits['images']; ?>" alt="Image de <?php echo $ligne['designation']; ?>" style="width:30%">
+                  <h5>Prix : <?php echo $ligne_produits["prixTTC"] ?>€</h5>
+              </article>
+              <?php
+          }
+      } else {
+          echo "Aucun produit ne correspond aux critères de filtrage.";
+      }
+    }
+    ?> 
     <div class="container">
       <footer
         class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
