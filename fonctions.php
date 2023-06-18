@@ -136,7 +136,7 @@
 
 	    function filtrerProduits($categorie, $forfait) {
         // Définition de la requête de base
-        $requete = "SELECT designation AS produit, intitule AS categorie, forfaitlivraison.description AS livraison, prixTTC, images 
+        $requete = "SELECT idPdt AS id, designation AS produit, intitule AS categorie, forfaitlivraison.description AS livraison, prixTTC, images 
                     FROM produit 
                     INNER JOIN categorieproduit ON produit.idCat = categorieproduit.idCat 
                     INNER JOIN forfaitlivraison ON produit.forfaitlivraison = forfaitlivraison.idForfait";
@@ -238,4 +238,3 @@
         }
     }
 ?>
-

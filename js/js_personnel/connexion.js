@@ -6,20 +6,6 @@ function verifierFormulaire() {
     return listeMajuscules.test(entree) && listeSpecialChars.test(entree);
 }
 
-
-/*function test_login() {
-    var div_login = document.getElementById("div_login");
-
-    if (!verifierFormulaire()) {
-        div_login.innerHTML = "<div class='alert alert-danger' role='alert'>Login invalide.</div>";
-        div_login.classList.add("alert", "alert-danger");
-    } else {
-        div_login.innerHTML = "<div class='alert alert-success' role='alert'>Login valide.</div>";
-        div_login.classList.remove("alert", "alert-danger");
-    }
-}*/
-
-
 const formulaire = document.querySelector("form");
 formulaire.addEventListener("submit", function(event) { // Quand l'utilisateur envoi le formulaire
     event.preventDefault();
@@ -31,3 +17,7 @@ formulaire.addEventListener("submit", function(event) { // Quand l'utilisateur e
         alert("Le login doit contenir au moins une majuscule et un caractère spécial.") // Bloque l'envoi
     }
 });
+
+function test() {
+    console.log(verifierFormulaire());
+}

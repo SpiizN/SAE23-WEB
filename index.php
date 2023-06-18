@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="css/css_personnel/css_global.css">
+    <link rel="stylesheet" href="css/css_personnel/Levan_MARTIN_CSS.css">
     <link rel="stylesheet" href="css/css_bootstrap/bootstrap.min.css">
 </head>
 <body>
@@ -71,7 +71,7 @@
       </div>
       
     <div id="main">
-      <?php if (empty($_GET)) { ?>
+      <?php if (!isset($_GET['view'])) { ?>
         <div class="container px-4 py-5" id="custom-cards">
           <h1><strong>Nos produits</strong></h1>
           <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
@@ -126,68 +126,89 @@
           }
         } 
       ?>
-    </div>
+    
+    <?php if (!isset($_GET['view'])) { ?>
+    <div class="container px-4 py-5" id="custom-cards">
+      <h1><strong>Produits filtrés</strong></h1>
+      <form method="GET" action="#categorie">
+        <label for="categorie">Catégorie :</label>
+        <select id="categorie" name="categorie">
+          <option value="">Toutes les catégories</option>
+          <option value="1">Nourriture</option>
+          <option value="2">Électronique</option>
+          <option value="3">Cuisine</option>
+          <option value="4">Pharmacie</option>
+          <option value="5">Pétrole</option>
+          <option value="6">Construction</option>
+          <option value="7">Chimique</option>
+          <option value="8">Textile</option>
+          <option value="9">Automobile</option>
+          <option value="10">Manufacture</option>
+        </select>
         
-    <form method="GET" action="#categorie">
-      <label for="categorie">Catégorie :</label>
-      <select id="categorie" name="categorie">
-        <option value="">Toutes les catégories</option>
-        <option value="1">Nourriture</option>
-        <option value="2">Électronique</option>
-        <option value="3">Cuisine</option>
-        <option value="4">Pharmacie</option>
-        <option value="5">Pétrole</option>
-        <option value="6">Construction</option>
-        <option value="7">Chimique</option>
-        <option value="8">Textile</option>
-        <option value="9">Automobile</option>
-        <option value="10">Manufacture</option>
-      </select>
+        <label for="forfait">Forfait de livraison :</label>
+        <select id="forfait" name="forfait">
+          <option value="">Tous les forfaits</option>
+          <option value="1">- de 1kg</option>
+          <option value="2">- de 5kg</option>
+          <option value="3">- de 10kg</option>
+          <option value="4">- de 15kg</option>
+          <option value="5">- de 30kg</option>
+          <option value="6">- de 50kg</option>
+          <option value="7">- de 75kg</option>
+          <option value="8">- de 100kg</option>
+          <option value="9">- de 150kg</option>
+          <option value="10">+ de 150kg</option>
+        </select>
+        <button type="submit">Filtrer</button>
+      </form>
+      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      <?php
       
-      <label for="forfait">Forfait de livraison :</label>
-      <select id="forfait" name="forfait">
-        <option value="">Tous les forfaits</option>
-        <option value="1">- de 1kg</option>
-        <option value="2">- de 5kg</option>
-        <option value="3">- de 10kg</option>
-        <option value="4">- de 15kg</option>
-        <option value="5">- de 30kg</option>
-        <option value="6">- de 50kg</option>
-        <option value="7">- de 75kg</option>
-        <option value="8">- de 100kg</option>
-        <option value="9">- de 150kg</option>
-        <option value="10">+ de 150kg</option>
-      </select>
-      <button type="submit">Filtrer</button>
-    </form>
-    <?php
-    
-    // Vérifier si le formulaire a été soumis
-    if (isset($_GET['categorie']) && isset($_GET['forfait'])) {
-      // Récupérer les valeurs du formulaire
-      $categorie = $_GET['categorie'];
-      $forfait = $_GET['forfait'];
-    
-      // Filtrer les produits en fonction des valeurs sélectionnées
-      $tab_produits_filtre = filtrerProduits($categorie, $forfait);
-    
-      // Vérifier s'il y a des produits à afficher
-      if (!empty($tab_produits_filtre)) {
-          // Afficher les produits
-          foreach ($tab_produits_filtre as $ligne_produits_filtre) {
-              ?>
-              <article class="article_produit">
-                  <h2><?php echo $ligne_produits_filtre["produit"]; ?></h2>
-                  <img src="<?php echo $ligne_produits_filtre['images']; ?>" alt="Image de <?php echo $ligne['designation']; ?>" style="width:30%">
-                  <h5>Prix : <?php echo $ligne_produits_filtre["prixTTC"] ?>€</h5>
-              </article>
-              <?php
-          }
-      } else {
-          echo "Aucun produit ne correspond aux critères de filtrage.";
+      // Vérifier si le formulaire a été soumis
+      if (isset($_GET['categorie']) && isset($_GET['forfait'])) {
+        // Récupérer les valeurs du formulaire
+        $categorie = $_GET['categorie'];
+        $forfait = $_GET['forfait'];
+      
+        // Filtrer les produits en fonction des valeurs sélectionnées
+        $tab_produits_filtre = filtrerProduits($categorie, $forfait);
+      
+        // Vérifier s'il y a des produits à afficher
+        if (!empty($tab_produits_filtre)) {
+            // Afficher les produits
+            foreach ($tab_produits_filtre as $ligne_produits_filtre) {
+                ?>
+                <div class="col" onclick="redirection(<?php echo $ligne_produits_filtre['id']; ?>)">
+                  <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url(<?php echo $ligne_produits_filtre['images'] ?>); background-size: cover;">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                      <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" style="color: black;"><?php echo $ligne_produits_filtre['produit'] ?></h3>
+                      <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                          <img src="<?php echo $ligne_produits_filtre['images'] ?>" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                        </li>
+                        <li class="d-flex align-items-center me-3" style="color: black;">
+                          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                          <small><strong><?php echo $ligne_produits_filtre['categorie']; ?></strong></small>
+                        </li>
+                        <li class="d-flex align-items-center" style="color: black;">
+                          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                          <small><strong><?php echo $ligne_produits_filtre["prixTTC"] ?>€</strong></small>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <?php
+            }
+        } else {
+            echo "Aucun produit ne correspond aux critères de filtrage.";
+        }
       }
-    }
-    ?> 
+      ?> 
+      </div>
+    </div>
+    <?php } ?>
     <div class="container">
       <footer
         class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
