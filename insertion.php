@@ -67,16 +67,17 @@ $forfaitsLivraison = listerForfaitsLivraison();
     <link rel="stylesheet" href="css/css_bootstrap/bootstrap.min.css">
 
     <style>
-      table {
-        border-collapse: collapse;
-        width: 80%;
-      }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
 
-      table th, table td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-      }
+        table th,
+        table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
 
       table th {
         background-color: #f2f2f2;
@@ -150,32 +151,36 @@ $forfaitsLivraison = listerForfaitsLivraison();
           <div class="col-lg-12 p-3 p-lg-5 pt-lg-3" id="formulaire">
 
     <form method="POST" action="insertion.php" enctype="multipart/form-data">
+        <fieldset>
                 <legend > Insérer un élément </legend>
         <label class="mt-2" for="designation">Désignation :</label>
         <input class="mt-2" type="text" name="designation" id="designation" required><br>
 
         <label class="mt-2" for="idCat">Catégorie :</label>
-        <select class="mt-2" name="idCat" id="idCat" required>
-            <?php foreach ($categories as $categorie): ?>
-                <option value="<?php echo $categorie['idCat']; ?>"><?php echo $categorie['intitule']; ?></option>
-            <?php endforeach; ?>
-        </select><br>
+<select class="mt-2" name="idCat" id="idCat" required>
+    <option value="" disabled selected hidden>Choisir une catégorie</option> <!-- Option de libellé de remplacement -->
+    <?php foreach ($categories as $categorie): ?>
+        <option value="<?php echo $categorie['idCat']; ?>"><?php echo $categorie['intitule']; ?></option>
+    <?php endforeach; ?>
+</select><br>
 
-        <label class="mt-2" for="prixTTC">Prix TTC :</label>
-        <input class="mt-2" type="number" name="prixTTC" id="prixTTC" step="0.01" required><br>
+<label class="mt-2" for="prixTTC">Prix TTC :</label>
+<input class="mt-2" type="number" name="prixTTC" id="prixTTC" step="0.01" required><br>
 
-        <label class="mt-2" for="forfaitLivraison">Forfait de livraison :</label>
-        <select class="mt-2" name="forfaitLivraison" id="forfaitLivraison" required>
-            <?php foreach ($forfaitsLivraison as $forfait): ?>
-                <option value="<?php echo $forfait['idForfait']; ?>"><?php echo $forfait['description']; ?></option>
-            <?php endforeach; ?>
-        </select><br>
+<label class="mt-2" for="forfaitLivraison">Forfait de livraison :</label>
+<select class="mt-2" name="forfaitLivraison" id="forfaitLivraison" required>
+    <option value="" disabled selected hidden>Choisir un forfait de livraison</option> <!-- Option de libellé de remplacement -->
+    <?php foreach ($forfaitsLivraison as $forfait): ?>
+        <option value="<?php echo $forfait['idForfait']; ?>"><?php echo $forfait['description']; ?></option>
+    <?php endforeach; ?>
+</select><br>
 
         <label class="mt-2" for="image">Image :</label>
         <input class="mt-2" type="file" name="image" id="image" required><br>
 
         <input class="mt-2" type="submit" value="Insérer">
         <p><a href="index.php">Retour à la page d'accueil</a></p>
+            </fieldset>
     </form>
 
     <?php if ($success){ ?>
@@ -228,8 +233,6 @@ $forfaitsLivraison = listerForfaitsLivraison();
             </li>
           </ul>
         </footer>
-      </div>
-    </div>
   </div>
   <script src="js/js_personnel/navbar.js"></script>
   <script src="js/js_personnel/index.js"></script>
